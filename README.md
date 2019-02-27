@@ -5,10 +5,11 @@ Most popular machine learning algorithms implemented from scratch.
 For each algorithm, the code consists of two parts:
 * Manual
 * Sklearn
+
 Manual contains implementations of the algorithm from scratch, while sklearn is an implementation of the same algorithm using the sklearn library.
 Both parts use the same data so it is possible to compare the algorithm we have built with the one implemented in the library.
 
-Code with 2D plots is written in the jupyter notebook, but for better visualization, the code containing 3D pots is written as a .py extension.
+Code with 2D plots is written in the jupyter notebook, but for better visualization, the code containing 3D plots is written as a .py extension.
 
 ### List of algorithms
 
