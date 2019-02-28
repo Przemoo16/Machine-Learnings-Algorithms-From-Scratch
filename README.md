@@ -35,6 +35,7 @@ Code with 2D plots is written in the jupyter notebook, but for better visualizat
 
 * [Numpy](http://www.numpy.org) - Package for scientific computing
 * [Matplotlib](https://matplotlib.org) - Plotting library
+* [mplot3d API](https://matplotlib.org) - Plotting library
 * [Seaborn](https://seaborn.pydata.org) - Data visualization library based on matplotlib
 * [Scikit-Learn](https://scikit-learn.org/stable/) - Data mining and data analysis library
 
