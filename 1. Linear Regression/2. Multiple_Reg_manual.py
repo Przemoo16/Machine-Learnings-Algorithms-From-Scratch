@@ -38,7 +38,7 @@ def compute_error(labels, predictions):
 		labels: y_true
 		predictions: y_hat
 	"""
-	return (np.sum(np.subtract(labels, predictions)**2))/len(labels)
+	return (np.sum(labels - predictions)**2)/len(labels)
 
 # Function to compute gradient
 def compute_gradient(features1, features2, labels, predictions):
@@ -48,9 +48,9 @@ def compute_gradient(features1, features2, labels, predictions):
 		labels: y_true
 		predictions: y_hat
 	"""
-	w1_gradient = np.sum(-np.dot(features1, (np.subtract(labels, predictions))))*(2/len(labels))
-	w2_gradient = np.sum(-np.dot(features2, (np.subtract(labels, predictions))))*(2/len(labels))
-	b_gradient = np.sum(-np.subtract(labels, predictions))*(2/len(labels))
+	w1_gradient = -np.sum(np.dot(features1, (labels - predictions)))*(2/len(labels))
+	w2_gradient = -np.sum(np.dot(features2, (labels - predictions)))*(2/len(labels))
+	b_gradient = -np.sum(labels - predictions)*(2/len(labels))
 	return w1_gradient, w2_gradient, b_gradient
 
 # Randomly initialize W1, W2 and b
@@ -65,7 +65,7 @@ epochs = 100000
 
 # Training loop
 for epoch in range(epochs):
-	# Predictions for training data
+	# Predictions
 	y_hat = W1*x1 + W2*x2 + b
 	# Error
 	error = compute_error(y_true, y_hat)
@@ -85,14 +85,14 @@ for epoch in range(epochs):
 # All combinations of x1 and x2 for 3D plot
 x1_surf, x2_surf = np.meshgrid(np.linspace(x1.min(), x1.max(), 100), np.linspace(x2.min(), x2.max(), 100))
 
-# Predictions for test data
+# Predictions for plane
 y_pred = W1*x1_surf.ravel() + W2*x2_surf.ravel() + b
 # Create figure
 fig = plt.figure()
 ax = Axes3D(fig)
-# Plot test data
+# Plot data
 ax.scatter(x1,x2,y_true)
-# Plot plane fitted to test data
+# Plot plane fitted to data
 ax.plot_surface(x1_surf,x2_surf, y_pred.reshape(x1_surf.shape), color='None', alpha=0.5)
 # Title
 ax.set_title('Fitted Plane')

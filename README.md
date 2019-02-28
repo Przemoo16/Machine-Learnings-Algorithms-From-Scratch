@@ -21,10 +21,10 @@ Code with 2D plots is written in the jupyter notebook, but for better visualizat
 - Logistic Regression
   * Simple
   * Multiple
-- K-Means Clustering
+- K-Nearest Neighbors
   * 2D
   * 3D
-- K-Nearest Neighbors
+- K-Means Clustering
   * 2D
   * 3D
 - Support Vector Machines
