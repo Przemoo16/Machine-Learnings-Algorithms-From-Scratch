@@ -47,7 +47,7 @@ lr = LinearRegression()
 # Train model
 lr.fit(x_poly, y_true)
 
-# All combinations of x1 and x2 for 3D plot
+# All combinations of x1 and x2 for plane
 x1_surf, x2_surf = np.meshgrid(np.linspace(x1.min(), x1.max(), 300),np.linspace(x2.min(), x2.max(), 300))
 
 # Merge x1_surf and x2_surf
@@ -66,12 +66,12 @@ preds = lr.predict(x_both_poly)
 # Create figure
 fig = plt.figure()
 ax = Axes3D(fig)
-# plot data
+# Plot data
 ax.scatter(x1,x2,y_true)
-# Plot hyperplane fitted to data
+# Plot plane fitted to data
 ax.plot_surface(x1_surf, x2_surf, preds.reshape(x1_surf.shape), color='None', alpha=0.5)
 # Title
-ax.set_title('Fitted Hyperplane')
+ax.set_title('Fitted Plane')
 # Labels names
 ax.set_xlabel('x1')
 ax.set_ylabel('x2')

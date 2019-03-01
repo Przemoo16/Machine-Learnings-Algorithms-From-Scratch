@@ -3,8 +3,6 @@ from mpl_toolkits.mplot3d import Axes3D
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-from sklearn.model_selection import train_test_split
-
 # Seed
 np.random.seed(101)
 
@@ -33,7 +31,7 @@ ax.set_ylabel('x2')
 ax.set_zlabel('y_true')
 
 # Function to compute MSE error
-def compute_error(labels, predictions):
+def mse_error(labels, predictions):
 	"""
 		labels: y_true
 		predictions: y_hat
@@ -41,7 +39,7 @@ def compute_error(labels, predictions):
 	return (np.sum(labels - predictions)**2)/len(labels)
 
 # Function to compute gradient
-def compute_gradient(features1, features2, labels, predictions):
+def gradient(features1, features2, labels, predictions):
 	"""
 		features1: x1
 		features2: x2
@@ -68,9 +66,9 @@ for epoch in range(epochs):
 	# Predictions
 	y_hat = W1*x1 + W2*x2 + b
 	# Error
-	error = compute_error(y_true, y_hat)
+	error = mse_error(y_true, y_hat)
 	# Gradient
-	new_w1, new_w2, new_b = compute_gradient(x1, x2, y_true, y_hat)
+	new_w1, new_w2, new_b = gradient(x1, x2, y_true, y_hat)
 	# Update W1
 	W1 = W1 - learning_rate * new_w1
 	# Update W2
@@ -82,7 +80,7 @@ for epoch in range(epochs):
 	if epoch % 1000 == 0:
 		print('Epoch: {}, Error: {}'.format(epoch, error))
 
-# All combinations of x1 and x2 for 3D plot
+# All combinations of x1 and x2 for plane
 x1_surf, x2_surf = np.meshgrid(np.linspace(x1.min(), x1.max(), 100), np.linspace(x2.min(), x2.max(), 100))
 
 # Predictions for plane

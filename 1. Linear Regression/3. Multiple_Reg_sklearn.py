@@ -43,7 +43,7 @@ lr = LinearRegression()
 # Train model
 lr.fit(x_both, y_true)
 
-# All combinations of x1 and x2 for 3D plot
+# All combinations of x1 and x2 for plane
 x1_surf, x2_surf = np.meshgrid(np.linspace(x1.min(), x1.max(), 100), np.linspace(x2.min(), x2.max(), 100))
 
 # Merge x1_surf and x2_surf

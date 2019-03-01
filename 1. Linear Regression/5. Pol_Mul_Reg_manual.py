@@ -29,7 +29,7 @@ ax.set_xlabel('x1')
 ax.set_ylabel('x2')
 ax.set_zlabel('y_true')
 
-def compute_error(labels, predictions):
+def mse_error(labels, predictions):
     """
         labels: y_true
         predictions: y_hat
@@ -39,7 +39,7 @@ def compute_error(labels, predictions):
         error += (label - pred) ** 2
     return error / float(len(labels))
 
-def compute_gradient(features1, features2, labels, predictions):
+def gradient(features1, features2, labels, predictions):
     """
         features1: x1
         features2: x2
@@ -75,13 +75,14 @@ learning_rate = 0.0001
 # Epochs
 epochs = 100000
 
+# Training loop
 for epoch in range(epochs):
     # Predictions
     y_hat = W1*x1 + W2*x2 + W3*(x1**2) + W4*(x2**2) + W5*(x1*x2) + b
     # Error
-    error = compute_error(y_true, y_hat)
+    error = mse_error(y_true, y_hat)
     # Gradient
-    new_w1, new_w2, new_w3, new_w4, new_w5, new_b = compute_gradient(x1, x2, y_true, y_hat)
+    new_w1, new_w2, new_w3, new_w4, new_w5, new_b = gradient(x1, x2, y_true, y_hat)
     # Update W1
     W1 = W1 - learning_rate * new_w1
     # Update W2
@@ -98,10 +99,10 @@ for epoch in range(epochs):
     if epoch % 1000 == 0:
         print('Epoch: {}, Error: {}'.format(epoch, error))
 
-# All combinations of x1 and x2 for 3D plot
+# All combinations of x1 and x2 for plane 
 x1_surf, x2_surf = np.meshgrid(np.linspace(x1.min(), x1.max(), 100),np.linspace(x2.min(), x2.max(), 100))
 
-# Predictions for hyperplane
+# Predictions for plane
 y_pred = W1*x1_surf.ravel() + W2*x2_surf.ravel() + W3*(x1_surf.ravel()**2) + W4*x2_surf.ravel()**2 + W5*x1_surf.ravel()*x2_surf.ravel() + b
 
 # Create figure
@@ -109,10 +110,10 @@ fig = plt.figure()
 ax = Axes3D(fig)
 # Plot data
 ax.scatter(x1,x2,y_true)
-# Plot hyperplane fitted to data
+# Plot plane fitted to data
 ax.plot_surface(x1_surf, x2_surf, y_pred.reshape(x1_surf.shape), color='None', alpha=0.5)
 # Title
-ax.set_title('Fitted Hyperplane')
+ax.set_title('Fitted Plane')
 # Labels names
 ax.set_xlabel('x1')
 ax.set_ylabel('x2')
