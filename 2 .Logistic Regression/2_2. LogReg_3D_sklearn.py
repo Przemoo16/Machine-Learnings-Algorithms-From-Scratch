@@ -32,9 +32,9 @@ ax.scatter(X_test[:, 0], X_test[:, 1], X_test[:, 2], c=y_test)
 # Title
 ax.set_title('Test data')
 # Axes
-ax.set_xlabel('X1')
-ax.set_ylabel('X2')
-ax.set_zlabel('X3')
+ax.set_xlabel('x1')
+ax.set_ylabel('x2')
+ax.set_zlabel('x3')
 
 # Create Logistic Regression model
 log = LogisticRegression()
@@ -58,7 +58,7 @@ b = log.intercept_[0]
 # Function to create boundary surface
 z = lambda x1,x2: (-b - W1*x1 - W2*x2) / W3
 
-# Data to create boundary surface
+# Data to create Decision Boundary (seperating surface)
 tmp = np.linspace(X_test.min()-1,X_test.max()+1,51)
 xx,yy = np.meshgrid(tmp,tmp)
 
@@ -67,14 +67,14 @@ fig = plt.figure()
 ax = Axes3D(fig)
 # Plot predictions
 ax.scatter(X_test[:, 0], X_test[:, 1], X_test[:, 2], c=preds)
-# Plot boundary surface
+# Plot Decision Boundary
 ax.plot_surface(xx, yy, z(xx,yy), color = None, alpha = 0.5)
 # Title
-ax.set_title('Predictions')
+ax.set_title('Decision Boundary')
 # Axes
-ax.set_xlabel('X1')
-ax.set_ylabel('X2')
-ax.set_zlabel('X3')
+ax.set_xlabel('x1')
+ax.set_ylabel('x2')
+ax.set_zlabel('x3')
 
 # Create figure
 fig = plt.figure()

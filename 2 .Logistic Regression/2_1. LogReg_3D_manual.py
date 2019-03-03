@@ -20,18 +20,6 @@ x, y_true = make_classification(n_samples=num_points, n_features=num_features, n
 # Split data
 X_train, X_test, y_train, y_test = train_test_split(x, y_true, test_size=0.3, random_state=101)
 
-# # Create figure
-# fig = plt.figure()
-# ax = Axes3D(fig)
-# # Plot training data
-# ax.scatter(X_train[:, 0], X_train[:, 1], X_train[:, 2], c=y_train)
-# Title
-# ax.set_title('Training data')
-# Axes
-# ax.set_xlabel('X1')
-# ax.set_ylabel('X2')
-# ax.set_zlabel('X3')
-
 # Create figure
 fig = plt.figure()
 ax = Axes3D(fig)
@@ -40,9 +28,9 @@ ax.scatter(X_test[:, 0], X_test[:, 1], X_test[:, 2], c=y_test)
 # Title
 ax.set_title('Test data')
 # Axes
-ax.set_xlabel('X1')
-ax.set_ylabel('X2')
-ax.set_zlabel('X3')
+ax.set_xlabel('x1')
+ax.set_ylabel('x2')
+ax.set_zlabel('x3')
 
 # Sigmoid function
 def sigmoid(x):
@@ -96,7 +84,7 @@ test_rounded = [1 if el >= 0.5 else 0 for el in y_hat_test]
 # Function to create boundary surface
 z = lambda x1,x2: (-b - W1*x1 - W2*x2) / W3
 
-# Data to create boundary surface
+# Data to create Decision Boundary (seperating surface)
 tmp = np.linspace(X_test.min()-1,X_test.max()+1,51)
 xx,yy = np.meshgrid(tmp,tmp)
 
@@ -105,14 +93,14 @@ fig = plt.figure()
 ax = Axes3D(fig)
 # Plot predictions
 ax.scatter(X_test[:, 0], X_test[:, 1], X_test[:, 2], c=test_rounded)
-# Plot boundary surface
+# Plot Decision Boundary
 ax.plot_surface(xx, yy, z(xx,yy), color = None, alpha = 0.5)
 # Title
-ax.set_title('Predictions')
+ax.set_title('Decision Boundary')
 # Axes
-ax.set_xlabel('X1')
-ax.set_ylabel('X2')
-ax.set_zlabel('X3')
+ax.set_xlabel('x1')
+ax.set_ylabel('x2')
+ax.set_zlabel('x3')
 
 # Plot ROC Curve
 thresholds = np.linspace(1,0,101)
