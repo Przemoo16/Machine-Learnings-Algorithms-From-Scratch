@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 # Seed
 np.random.seed(101)
 
-# Hyper-Parameters
+# HyperParameters
 num_classes = 2
 num_features = 3
 num_points = 500
@@ -81,12 +81,12 @@ y_hat_test = sigmoid(W1*X_test[:,0] + W2*X_test[:,1] + W3*X_test[:,2] + b)
 # Round predictions to 1 or 0
 test_rounded = [1 if el >= 0.5 else 0 for el in y_hat_test]
 
-# Function to create boundary surface
+# Function to create Decision Boundary (seperating surface)
 z = lambda x1,x2: (-b - W1*x1 - W2*x2) / W3
 
-# Data to create Decision Boundary (seperating surface)
+# Data to create Decision Boundary
 tmp = np.linspace(X_test.min()-1,X_test.max()+1,51)
-xx,yy = np.meshgrid(tmp,tmp)
+xx1,xx2 = np.meshgrid(tmp,tmp)
 
 # Create figure
 fig = plt.figure()
@@ -94,7 +94,7 @@ ax = Axes3D(fig)
 # Plot predictions
 ax.scatter(X_test[:, 0], X_test[:, 1], X_test[:, 2], c=test_rounded)
 # Plot Decision Boundary
-ax.plot_surface(xx, yy, z(xx,yy), color = None, alpha = 0.5)
+ax.plot_surface(xx1, xx2, z(xx1,xx2), color = None, alpha = 0.5)
 # Title
 ax.set_title('Decision Boundary')
 # Axes
