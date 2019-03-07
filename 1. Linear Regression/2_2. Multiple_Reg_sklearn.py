@@ -1,7 +1,6 @@
 import numpy as np
 from mpl_toolkits.mplot3d import Axes3D
 import matplotlib.pyplot as plt
-import seaborn as sns
 
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
@@ -51,7 +50,7 @@ x_both_surf = np.empty((len(x1_surf.ravel()),2))
 x_both_surf[:,0] = x1_surf.ravel()
 x_both_surf[:,1] = x2_surf.ravel()
 
-# Predictions for x_both_surf
+# Predictions for all combinations of x1 and x2
 preds = lr.predict(x_both_surf)
 
 # Create figure

@@ -1,8 +1,9 @@
 import numpy as np
-from sklearn.datasets import make_classification
-from sklearn.model_selection import train_test_split
 from mpl_toolkits.mplot3d import Axes3D
 import matplotlib.pyplot as plt
+
+from sklearn.datasets import make_classification
+from sklearn.model_selection import train_test_split
 
 # Seed
 np.random.seed(101)
@@ -120,7 +121,7 @@ for i in range(101):
     FPR_t = FP_t / float(FP_t + TN_t)
     ROC[i,0] = FPR_t
 
-    # Compute true  positive rate for current threshold.
+    # Compute true positive rate for current threshold.
     TPR_t = TP_t / float(TP_t + FN_t)
     ROC[i,1] = TPR_t
 

@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 from sklearn.datasets import make_classification
 from sklearn.model_selection import train_test_split
 
-# MANUAL
+#### MANUAL ####
 
 # Seed
 np.random.seed(101)
@@ -37,7 +37,7 @@ ax.set_zlabel('x3')
 def distances_func(points, pred_point, labels, k):
 	# Distances between all points (dist, index, label)
 	distances = [[np.linalg.norm(point-pred_point), index, label] for index, point, label in zip(range(len(labels)), points, labels)]
-	# Sort descending table and choose only k values
+	# Sort descending and choose only k values
 	return np.array(sorted(distances)[:k])
 
 # List to grab final labels
@@ -108,8 +108,6 @@ ax.set_xlabel('x1')
 ax.set_ylabel('x2')
 ax.legend()
 
-pred_points = X_train[distances[:,1].astype(np.int32)]
-
 # Create figure
 fig = plt.figure()
 ax = Axes3D(fig)
@@ -134,7 +132,7 @@ ax.set_xlabel('x1')
 ax.set_ylabel('x2')
 ax.legend()
 
-# SKLEARN
+#### SKLEARN ####
 
 from sklearn.neighbors import KNeighborsClassifier
 

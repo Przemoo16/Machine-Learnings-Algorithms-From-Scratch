@@ -29,6 +29,7 @@ ax.set_xlabel('x1')
 ax.set_ylabel('x2')
 ax.set_zlabel('y_true')
 
+# Function to compute MSE error
 def mse_error(labels, predictions):
     """
         labels: y_true
@@ -39,6 +40,7 @@ def mse_error(labels, predictions):
         error += (label - pred) ** 2
     return error / float(len(labels))
 
+# Function to compute gradient
 def gradient(features1, features2, labels, predictions):
     """
         features1: x1
