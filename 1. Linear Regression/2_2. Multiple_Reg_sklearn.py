@@ -56,7 +56,6 @@ preds = lr.predict(x_both_surf)
 # Create figure
 fig = plt.figure()
 ax = Axes3D(fig)
-
 # Plot data
 ax.scatter(x1, x2, y_true)
 # Plot plane fitted to data
