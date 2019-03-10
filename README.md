@@ -27,9 +27,9 @@ Code with 2D plots is written in the jupyter notebook, but for better visualizat
 - K-Means Clustering
   * 2D
   * 3D
-- Support Vector Machines
-- Decision Trees
-- Random Forests
+- Decision Tree
+  * ID3
+  * CART
 
 ## Requirements
 
