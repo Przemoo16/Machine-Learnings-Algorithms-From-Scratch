@@ -2,7 +2,7 @@
 
 Most popular machine learning algorithms implemented from scratch.
 
-For each algorithm, the code consists of two parts:
+For each algorithm (except Decision Tree), the code consists of two parts:
 * Manual
 * Sklearn
 
