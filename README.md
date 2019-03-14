@@ -28,8 +28,11 @@ Code with 2D plots is written in the jupyter notebook, but for better visualizat
   * 2D
   * 3D
 - Decision Tree
-  * ID3
-  * CART
+  * Classification
+  * Regression
+- Naive Bayes
+  * Classic NB
+  * GaussianNB
 
 ## Requirements
 
