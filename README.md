@@ -13,6 +13,8 @@ Code with 2D plots is written in the jupyter notebook, but for better visualizat
 
 ### Images
 
+<img src="/Images/lin_reg.png" width="250" height="250" />
+
 ![Image 1](/Images/lin_reg.png =250x250)
 ![Image 2](/Images/log_reg.png =250x250) 
 ![Image 3](/Images/knn.png =250x250)
