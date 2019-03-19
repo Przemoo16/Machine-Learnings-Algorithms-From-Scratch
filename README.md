@@ -13,10 +13,19 @@ Code with 2D plots is written in the jupyter notebook, but for better visualizat
 
 ### Images
 
+<center>
+<p>
 <img src="/Images/lin_reg.png" width="600" height="400" />
 <img src="/Images/log_reg.png" width="600" height="400" />
+</p>
+</center>
+
+<center>
+<p>
 <img src="/Images/knn.png" width="600" height="400" />
 <img src="/Images/kmeans.png" width="600" height="400" />
+</p>
+</center>
 
 ### List of algorithms
 
