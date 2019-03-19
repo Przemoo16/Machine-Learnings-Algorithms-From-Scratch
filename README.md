@@ -15,7 +15,7 @@ Code with 2D plots is written in the jupyter notebook, but for better visualizat
 
 <center>
 <p>
-<img src="/Images/lin_reg.png" width="600" height="400" />	<img src="/Images/log_reg.png" width="600" height="400" />
+<img src="/Images/lin_reg.png" width="300" height="200" />	<img src="/Images/log_reg.png" width="300" height="200" />
 
 </p>
 </center>
