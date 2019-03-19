@@ -11,6 +11,13 @@ Both parts use the same data so it is possible to compare the algorithm we have 
 
 Code with 2D plots is written in the jupyter notebook, but for better visualization, the code containing 3D plots is written as a .py extension.
 
+### Images
+
+![Image 1](/Images/lin_reg.png)
+![Image 2](/Images/log_reg.png) 
+![Image 3](/Images/knn.png)
+![Image 4](/Images/kmeans.png)
+
 ### List of algorithms
 
 - Linear Regression
