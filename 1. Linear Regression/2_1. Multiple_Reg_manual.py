@@ -32,20 +32,24 @@ ax.set_zlabel('y_true')
 
 def mse_error(labels, predictions):
     """
-        Function to compute MSE error
-        labels: y_true.
-        predictions: y_hat
+    Compute MSE error.
+
+    labels: y_true.
+    predictions: y_hat
+
     """
     return (np.sum(labels - predictions)**2)/len(labels)
 
 
 def gradient(features1, features2, labels, predictions):
     """
-        Function to compute gradient
-        features1: x1
-        features2: x2
-        labels: y_true
-        predictions: y_hat
+    Compute gradient.
+
+    features1: x1
+    features2: x2
+    labels: y_true
+    predictions: y_hat
+
     """
     w1_gradient = -np.sum(np.dot(features1, (labels - predictions)))*(2/len(labels))
     w2_gradient = -np.sum(np.dot(features2, (labels - predictions)))*(2/len(labels))
