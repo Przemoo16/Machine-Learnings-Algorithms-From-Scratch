@@ -11,11 +11,11 @@ x2_noise = np.random.randn(300)
 y_noise = np.random.randn(300)
 
 # Create x data
-x1 = np.linspace(0,10,300) + x1_noise
-x2 = np.linspace(0,10,300) + x2_noise
+x1 = np.linspace(0, 10, 300) + x1_noise
+x2 = np.linspace(0, 10, 300) + x2_noise
 
 # Create y data
-y_true = -0.7 * x1 + 0.4*x2 - 0.5 * (x1**2)  + 0.2* (x2**2) - 2 * (x1*x2) + 5 + y_noise
+y_true = -0.7 * x1 + 0.4*x2 - 0.5 * (x1**2) + 0.2 * (x2**2) - 2 * (x1*x2) + 5 + y_noise
 
 # Create figure
 fig = plt.figure()
@@ -29,9 +29,10 @@ ax.set_xlabel('x1')
 ax.set_ylabel('x2')
 ax.set_zlabel('y_true')
 
-# Function to compute MSE error
+
 def mse_error(labels, predictions):
     """
+        Function to compute MSE error
         labels: y_true
         predictions: y_hat
     """
@@ -40,9 +41,10 @@ def mse_error(labels, predictions):
         error += (label - pred) ** 2
     return error / float(len(labels))
 
-# Function to compute gradient
+
 def gradient(features1, features2, labels, predictions):
     """
+        Function to compute gradient
         features1: x1
         features2: x2
         labels: y_true
@@ -63,6 +65,7 @@ def gradient(features1, features2, labels, predictions):
         w5_gradient += -(2/N) * (feat1 * feat2) * (label - pred)
         b_gradient += -(2/N) * (label - pred)
     return w1_gradient, w2_gradient, w3_gradient, w4_gradient, w5_gradient, b_gradient
+
 
 # Randomly initialize W1, W2, W3, W4, W5 and b
 W1 = np.random.randn()
@@ -101,17 +104,19 @@ for epoch in range(epochs):
     if epoch % 1000 == 0:
         print('Epoch: {}, Error: {}'.format(epoch, error))
 
-# All combinations of x1 and x2 for plane 
-x1_surf, x2_surf = np.meshgrid(np.linspace(x1.min(), x1.max(), 100),np.linspace(x2.min(), x2.max(), 100))
+# All combinations of x1 and x2 for plane
+x1_surf, x2_surf = np.meshgrid(np.linspace(x1.min(), x1.max(), 100),
+                               np.linspace(x2.min(), x2.max(), 100))
 
 # Predictions for plane
-y_pred = W1*x1_surf.ravel() + W2*x2_surf.ravel() + W3*(x1_surf.ravel()**2) + W4*x2_surf.ravel()**2 + W5*x1_surf.ravel()*x2_surf.ravel() + b
+y_pred = W1*x1_surf.ravel() + W2*x2_surf.ravel() + W3*(x1_surf.ravel()**2) + W4 * \
+    x2_surf.ravel()**2 + W5*x1_surf.ravel()*x2_surf.ravel() + b
 
 # Create figure
 fig = plt.figure()
 ax = Axes3D(fig)
 # Plot data
-ax.scatter(x1,x2,y_true)
+ax.scatter(x1, x2, y_true)
 # Plot plane fitted to data
 ax.plot_surface(x1_surf, x2_surf, y_pred.reshape(x1_surf.shape), color='None', alpha=0.5)
 # Title

@@ -14,11 +14,11 @@ x2_noise = np.random.randn(300)
 y_noise = np.random.randn(300)
 
 # Create x data
-x1 = np.linspace(0,10,300) + x1_noise
-x2 = np.linspace(0,10,300) + x2_noise
+x1 = np.linspace(0, 10, 300) + x1_noise
+x2 = np.linspace(0, 10, 300) + x2_noise
 
 # Create y data
-y_true = -0.7 * x1 + 0.4*x2 - 0.5 * (x1**2)  + 0.2* (x2**2) - 2 * (x1*x2) + 5 + y_noise
+y_true = -0.7 * x1 + 0.4*x2 - 0.5 * (x1**2) + 0.2 * (x2**2) - 2 * (x1*x2) + 5 + y_noise
 
 # Create figure
 fig = plt.figure()
@@ -33,9 +33,9 @@ ax.set_ylabel('x2')
 ax.set_zlabel('y_true')
 
 # Merge x1 and x2
-x_both = np.empty((len(x1),2))
-x_both[:,0] = x1
-x_both[:,1] = x2
+x_both = np.empty((len(x1), 2))
+x_both[:, 0] = x1
+x_both[:, 1] = x2
 
 # Create Polynomial Features model
 poly = PolynomialFeatures(degree=2)
@@ -48,12 +48,13 @@ lr = LinearRegression()
 lr.fit(x_poly, y_true)
 
 # All combinations of x1 and x2 for plane
-x1_surf, x2_surf = np.meshgrid(np.linspace(x1.min(), x1.max(), 300),np.linspace(x2.min(), x2.max(), 300))
+x1_surf, x2_surf = np.meshgrid(np.linspace(x1.min(), x1.max(), 300),
+                               np.linspace(x2.min(), x2.max(), 300))
 
 # Merge x1_surf and x2_surf
-x_both_surf = np.empty((len(x1_surf.ravel()),2))
-x_both_surf[:,0] = x1_surf.ravel()
-x_both_surf[:,1] = x2_surf.ravel()
+x_both_surf = np.empty((len(x1_surf.ravel()), 2))
+x_both_surf[:, 0] = x1_surf.ravel()
+x_both_surf[:, 1] = x2_surf.ravel()
 
 # Create Polynomial Features model
 poly = PolynomialFeatures(degree=2)
@@ -67,7 +68,7 @@ preds = lr.predict(x_both_poly)
 fig = plt.figure()
 ax = Axes3D(fig)
 # Plot data
-ax.scatter(x1,x2,y_true)
+ax.scatter(x1, x2, y_true)
 # Plot plane fitted to data
 ax.plot_surface(x1_surf, x2_surf, preds.reshape(x1_surf.shape), color='None', alpha=0.5)
 # Title

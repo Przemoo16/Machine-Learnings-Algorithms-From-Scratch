@@ -2,7 +2,6 @@ import numpy as np
 from mpl_toolkits.mplot3d import Axes3D
 import matplotlib.pyplot as plt
 
-from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 
 # Seed
@@ -33,9 +32,9 @@ ax.set_ylabel('x2')
 ax.set_zlabel('y_true')
 
 # Merge x1 and x2
-x_both = np.empty((len(x1),2))
-x_both[:,0] = x1
-x_both[:,1] = x2
+x_both = np.empty((len(x1), 2))
+x_both[:, 0] = x1
+x_both[:, 1] = x2
 
 # Create Linear Regression model
 lr = LinearRegression()
@@ -43,12 +42,13 @@ lr = LinearRegression()
 lr.fit(x_both, y_true)
 
 # All combinations of x1 and x2 for plane
-x1_surf, x2_surf = np.meshgrid(np.linspace(x1.min(), x1.max(), 100), np.linspace(x2.min(), x2.max(), 100))
+x1_surf, x2_surf = np.meshgrid(np.linspace(x1.min(), x1.max(), 100),
+                               np.linspace(x2.min(), x2.max(), 100))
 
 # Merge x1_surf and x2_surf
-x_both_surf = np.empty((len(x1_surf.ravel()),2))
-x_both_surf[:,0] = x1_surf.ravel()
-x_both_surf[:,1] = x2_surf.ravel()
+x_both_surf = np.empty((len(x1_surf.ravel()), 2))
+x_both_surf[:, 0] = x1_surf.ravel()
+x_both_surf[:, 1] = x2_surf.ravel()
 
 # Predictions for all combinations of x1 and x2
 preds = lr.predict(x_both_surf)
@@ -59,7 +59,7 @@ ax = Axes3D(fig)
 # Plot data
 ax.scatter(x1, x2, y_true)
 # Plot plane fitted to data
-ax.plot_surface(x1_surf,x2_surf, preds.reshape(x1_surf.shape), color='None', alpha=0.5)
+ax.plot_surface(x1_surf, x2_surf, preds.reshape(x1_surf.shape), color='None', alpha=0.5)
 # Title
 ax.set_title('Fitted Plane')
 # Labels names

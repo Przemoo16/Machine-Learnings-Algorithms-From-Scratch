@@ -19,7 +19,8 @@ epochs = 50000
 learning_rate = 0.001
 
 # Generate data
-x, y_true = make_classification(n_samples=num_points, n_features=num_features, n_redundant=0, n_clusters_per_class=num_classes, class_sep=1.5)
+x, y_true = make_classification(n_samples=num_points, n_features=num_features,
+                                n_redundant=0, n_clusters_per_class=num_classes, class_sep=1.5)
 
 # Split data
 X_train, X_test, y_train, y_test = train_test_split(x, y_true, test_size=0.3, random_state=101)
@@ -55,12 +56,15 @@ W2 = log.coef_[0][1]
 W3 = log.coef_[0][2]
 b = log.intercept_[0]
 
-# Function to create Decision Boundary (seperating surface)
-z = lambda x1,x2: (-b - W1*x1 - W2*x2) / W3
+
+def z(x1, x2):
+    """Create Decision Boundary (seperating surface)."""
+    return (-b - W1*x1 - W2*x2) / W3
+
 
 # Data to create Decision Boundary
-tmp = np.linspace(X_test.min()-1,X_test.max()+1,51)
-xx1,xx2 = np.meshgrid(tmp,tmp)
+tmp = np.linspace(X_test.min()-1, X_test.max()+1, 51)
+xx1, xx2 = np.meshgrid(tmp, tmp)
 
 # Create figure
 fig = plt.figure()
@@ -68,7 +72,7 @@ ax = Axes3D(fig)
 # Plot predictions
 ax.scatter(X_test[:, 0], X_test[:, 1], X_test[:, 2], c=preds)
 # Plot Decision Boundary
-ax.plot_surface(xx1, xx2, z(xx1,xx2), color = None, alpha = 0.5)
+ax.plot_surface(xx1, xx2, z(xx1, xx2), color=None, alpha=0.5)
 # Title
 ax.set_title('Decision Boundary')
 # Axes
