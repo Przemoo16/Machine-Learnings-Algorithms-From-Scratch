@@ -13,15 +13,13 @@ Code with 2D plots is written in the jupyter notebook, but for better visualizat
 
 ### Images
 
-<center>
-<p>
+<p align="center">
 <img src="/Images/lin_reg.png" width="400" height="300" />
 <img src="/Images/log_reg.png" width="400" height="300" />
 </p>
 </center>
 
-<center>
-<p>
+<p align="center">
 <img src="/Images/knn.png" width="400" height="300" />
 <img src="/Images/kmeans.png" width="400" height="300" />
 </p>
